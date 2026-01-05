@@ -42,3 +42,7 @@ class FundMetrics(SQLModel):
     moic: float = 0.0
     realized_gains: float = 0.0
     unrealized_gains: float = 0.0
+    # Explicit mapping for Lovable
+    total_invested: float = 0.0
+    total_value: float = 0.0
+    irr: float = 0.0

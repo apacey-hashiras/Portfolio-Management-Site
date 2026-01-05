@@ -110,5 +110,8 @@ def calculate_fund_metrics(session: Session, fund_id: uuid.UUID):
         "rvpi": round(rvpi, 3),
         "moic": round(lp_net_moic, 3), # Using Net MOIC for the dashboard
         "realized_gains": realized_gains,
-        "unrealized_gains": unrealized_gains
+        "unrealized_gains": unrealized_gains,
+        "total_invested": total_contributed,
+        "total_value": total_distributions + fund_unrealized_value,
+        "irr": round(fund_net_irr * 100, 2) if fund_net_irr is not None else 0
     }
