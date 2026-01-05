@@ -1,6 +1,3 @@
-Below is a single, focused, implementation-ready **Option A** specification (Markdown) — the **“Companies = Investments”** simplified model you requested.
-Give this to an AI website-builder agent or a dev team: it contains the **Postgres DDL**, **computed-field definitions**, **waterfall & XIRR algorithms**, **REST API**, **frontend + UX**, **jobs/materialized view guidance**, and **acceptance tests**. It’s tailored to be fast to implement while supporting correct accounting (chronological waterfall, IRR, fees, carry).
-
 ---
 
 # Fund Portfolio Platform — Option A: *Companies = Investments*
