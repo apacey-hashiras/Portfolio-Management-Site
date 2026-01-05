@@ -34,3 +34,11 @@ class FundMetrics(SQLModel):
     fund_gross_irr: Optional[float] = None
     fund_net_irr: Optional[float] = None
     total_gp_carry: float
+    fund_unrealized_value: float
+    # Standard Industry Metrics
+    tvpi: float = 0.0
+    dpi: float = 0.0
+    rvpi: float = 0.0
+    moic: float = 0.0
+    realized_gains: float = 0.0
+    unrealized_gains: float = 0.0

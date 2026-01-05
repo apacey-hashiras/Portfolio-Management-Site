@@ -86,6 +86,15 @@ def calculate_fund_metrics(session: Session, fund_id: uuid.UUID):
         except:
             fund_net_irr = None
 
+    # Standard Industry Metrics
+    tvpi = (total_distributions + fund_unrealized_value) / total_contributed if total_contributed > 0 else 0
+    dpi = total_distributions / total_contributed if total_contributed > 0 else 0
+    rvpi = fund_unrealized_value / total_contributed if total_contributed > 0 else 0
+    
+    # For realized/unrealized gains, we'll use simple definitions for the dashboard
+    realized_gains = total_distributions - total_contributed if total_contributed > 0 else 0
+    unrealized_gains = fund_unrealized_value
+
     return {
         "fund_id": fund_id,
         "total_contributed": total_contributed,
@@ -95,5 +104,11 @@ def calculate_fund_metrics(session: Session, fund_id: uuid.UUID):
         "lp_net_moic": round(lp_net_moic, 4),
         "fund_net_irr": round(fund_net_irr, 4) if fund_net_irr is not None else None,
         "total_gp_carry": total_gp_carry,
-        "fund_unrealized_value": fund_unrealized_value
+        "fund_unrealized_value": fund_unrealized_value,
+        "tvpi": round(tvpi, 3),
+        "dpi": round(dpi, 3),
+        "rvpi": round(rvpi, 3),
+        "moic": round(lp_net_moic, 3), # Using Net MOIC for the dashboard
+        "realized_gains": realized_gains,
+        "unrealized_gains": unrealized_gains
     }
