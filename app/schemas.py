@@ -10,13 +10,13 @@ class FundRead(FundBase):
     id: uuid.UUID
 
 class PortfolioCompanyCreate(PortfolioCompanyBase):
-    pass
+    fund_id: Optional[uuid.UUID] = None
 
 class PortfolioCompanyRead(PortfolioCompanyBase):
     id: uuid.UUID
 
 class TransactionCreate(TransactionBase):
-    pass
+    fund_id: Optional[uuid.UUID] = None
 
 class TransactionRead(TransactionBase):
     id: uuid.UUID

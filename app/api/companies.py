@@ -13,7 +13,9 @@ def read_companies(fund_id: uuid.UUID, session: Session = Depends(get_session)):
 
 @router.post("/api/funds/{fund_id}/companies", response_model=schemas.PortfolioCompanyRead)
 def create_company(fund_id: uuid.UUID, company: schemas.PortfolioCompanyCreate, session: Session = Depends(get_session)):
-    if company.fund_id != fund_id:
+    if company.fund_id is None:
+        company.fund_id = fund_id
+    elif company.fund_id != fund_id:
         raise HTTPException(status_code=400, detail="Fund ID mismatch")
     return crud.create_company(session, company)
 
